@@ -18,7 +18,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
 
-
+        /**
+         * Should put some needed permissions in preparedPermissions array
+         */
         preparedPermissions.add(NeededPermission(Manifest.permission.ACCESS_FINE_LOCATION,"permission to define current location"))
         preparedPermissions.add(NeededPermission(Manifest.permission.ACCESS_BACKGROUND_LOCATION,"permission to define current location, but worked in background"))
         preparedPermissions.add(NeededPermission(Manifest.permission.CAMERA,"permission for camera"))

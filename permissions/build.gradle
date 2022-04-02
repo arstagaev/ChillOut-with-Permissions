@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'maven-publish' // jitpack.io
 }
 
 android {
@@ -51,4 +52,19 @@ dependencies {
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
 
     implementation "com.google.accompanist:accompanist-pager:0.20.3"
+}
+
+//for jitpack.io
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+
+                groupId = 'com.github.arstagaev'
+                artifactId = 'chillout-permissions'
+                version = '0.1'
+            }
+        }
+    }
 }
