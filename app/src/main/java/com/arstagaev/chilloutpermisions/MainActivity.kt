@@ -7,18 +7,22 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.arstagaev.chilloutpermisions.ui.theme.ChillOutPermisionsTheme
-import com.arstagaev.permissions.ExternalParameters
-import com.arstagaev.permissions.LauncherPermissions
-import com.arstagaev.permissions.NeededPermission
+import com.arstagaev.permissions.CoreOfChillOut
+import com.arstagaev.permissions.CoreOfChillOut.Companion.preparedPermissions
+import com.arstagaev.permissions.models.NeededPermission
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+
+        preparedPermissions.add(NeededPermission(Manifest.permission.ACCESS_FINE_LOCATION,"permission to define current location"))
+        preparedPermissions.add(NeededPermission(Manifest.permission.ACCESS_BACKGROUND_LOCATION,"permission to define current location, but worked in background"))
+        preparedPermissions.add(NeededPermission(Manifest.permission.CAMERA,"permission for camera"))
+        var core = CoreOfChillOut(this) // initialize core module
 
 
         setContent {
@@ -28,10 +32,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    var preparedPermissionsx = arrayListOf<NeededPermission>()
-                    preparedPermissionsx.add(NeededPermission(Manifest.permission.ACCESS_FINE_LOCATION,"permission to define current location)))",false))
-
-                    LauncherPermissions.start(preparedPermissionsx,MainActivity::class.java,this)
+                    CoreOfChillOut.HorizontalPagerPermissions(this@MainActivity)
                 }
             }
         }
