@@ -10,6 +10,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
@@ -70,7 +71,7 @@ class CoreOfChillOut(context: ComponentActivity) {
         var arrayOfPermissions                = mutableStateListOf<NeededPermission>()
         private var isWaitForAllowPermissions = mutableStateOf(false)
 
-        @OptIn(ExperimentalPagerApi::class)
+        @OptIn(ExperimentalPagerApi::class, ExperimentalAnimationApi::class)
         @Composable
         fun HorizontalPagerPermissions(context: ComponentActivity) {
             var pagerState = rememberPagerState()
