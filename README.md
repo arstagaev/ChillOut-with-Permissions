@@ -1,5 +1,10 @@
 # ChillOut with Permissions in Android!
 
+<table style= padding:10px">
+  <tr>
+    <td>  <img src="./Docs/img1"  alt="1" width = 400px height = 100px ></td>
+  </tr>
+</table>
 
 ### For What?
 ---
